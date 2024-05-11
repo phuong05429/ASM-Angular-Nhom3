@@ -4,6 +4,9 @@ import {ThemeModule} from '../@theme/theme.module';
 
 import {PagesComponent} from './pages.component';
 import {DashboardModule} from './dashboard/dashboard.module';
+import {CheckindModule} from './checkIn/checkin.module';
+import {CheckoutdModule} from './checkOut/checkout.module';
+import {BillListModule} from './billList/bill-list.module';
 import {PagesRoutingModule} from './pages-routing.module';
 import {PaginatorModule} from "../@theme/components/paginator/paginator.module";
 
@@ -12,6 +15,9 @@ import {PaginatorModule} from "../@theme/components/paginator/paginator.module";
     PagesRoutingModule,
     ThemeModule,
     DashboardModule,
+    CheckindModule,
+    CheckoutdModule,
+    BillListModule,
     NbMenuModule,
     PaginatorModule,
   ],
