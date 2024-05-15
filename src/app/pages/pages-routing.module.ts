@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {PagesComponent} from './pages.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import { MapHotelComponent } from './map-hotel/map-hotel.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,6 +13,11 @@ const routes: Routes = [{
       path: 'dashboard',
       component: DashboardComponent,
       data: {breadcrumb: 'Dashboard'},
+    },
+    {
+      path: 'map-hotel',
+      component: MapHotelComponent,
+      data: {breadcrumb: 'Map-hotel'},
     },
   ],
 }];
