@@ -10,6 +10,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Sơ đồ khách sạn',
     icon: 'map-outline',
     link: '/pages/map-hotel',
+    children: [
+      {
+        title: 'Quản lý phòng', 
+        icon: 'list-room', 
+        link: '/pages/list-room',
+      }
+    ],
   },
   {
     title: 'Khách sạn',
@@ -22,14 +29,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     // link: '/pages/room-price',
     children: [
       {
-        title: 'Đặt phòng', // Tiêu đề mục con
-        icon: 'add-outline', // Icon của mục con
-        link: '/pages/check-in', // Đường dẫn của mục con
+        title: 'Đặt phòng', 
+        icon: 'add-outline', 
+        link: '/pages/check-in',
       },
       {
-        title: 'Trả phòng', // Tiêu đề mục con
-        icon: 'add-outline', // Icon của mục con
-        link: '/pages/check-out', // Đường dẫn của mục con
+        title: 'Trả phòng', 
+        icon: 'add-outline', 
+        link: '/pages/check-out',
       },
     ],
   },
@@ -38,15 +45,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'cube-outline',
     link: '/pages/services',
   },
-
   {
     title: 'Công nợ',
     icon: 'credit-outline',
     link: '/pages/credit',
   },
-
- 
-  
   {
     title: 'Tiền chi & tiền thu',
     icon: 'trending-up-outline',
@@ -81,7 +84,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'file-text-outline', // Icon của mục con
         link: '/pages/dashboard', // Đường dẫn của mục con
       },
+      {
+        title: 'Biểu đồ', // Tiêu đề mục con
+        icon: 'file-text-outline', // Icon của mục con
+        link: '/pages/chart', // Đường dẫn của mục con
+      },
     ],
   },
-
 ];

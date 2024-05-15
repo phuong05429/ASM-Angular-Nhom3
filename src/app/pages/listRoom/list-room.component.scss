@@ -1,0 +1,30 @@
+.room {
+  height: 100px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.room-status {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 2px 5px;
+  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
+}
+.red {
+  background-color: #ff4d4d;
+}
+.green {
+  background-color: #4dff4d;
+}
+.grey {
+  background-color: #bfbfbf;
+}
+.blue {
+  background-color: #4d4dff;
+}

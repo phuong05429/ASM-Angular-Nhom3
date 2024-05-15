@@ -7,6 +7,8 @@ import {DashboardModule} from './dashboard/dashboard.module';
 import {CheckindModule} from './checkIn/checkin.module';
 import {CheckoutdModule} from './checkOut/checkout.module';
 import {BillListModule} from './billList/bill-list.module';
+import {ListRoomModule} from './listRoom/list-room.module';
+import {ChartModule} from './chart/chart.module';
 import {PagesRoutingModule} from './pages-routing.module';
 import {PaginatorModule} from "../@theme/components/paginator/paginator.module";
 
@@ -18,6 +20,8 @@ import {PaginatorModule} from "../@theme/components/paginator/paginator.module";
     CheckindModule,
     CheckoutdModule,
     BillListModule,
+    ListRoomModule,
+    ChartModule,
     NbMenuModule,
     PaginatorModule,
   ],

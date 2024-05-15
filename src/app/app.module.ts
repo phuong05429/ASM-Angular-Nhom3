@@ -13,12 +13,12 @@ import {
 import {HttpClientModule} from "@angular/common/http";
 import {CoreModule} from "./@core/core.module";
 import {ThemeModule} from "./@theme/theme.module";
-import { MapHotelComponent } from './pages/map-hotel/map-hotel.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapHotelComponent,
+ 
    
   ],
   imports: [

@@ -3,13 +3,11 @@ import {NgModule} from '@angular/core';
 
 import {PagesComponent} from './pages.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
-
 import {CheckoutComponent} from "./checkOut/checkout.component";
 import {BillListComponent} from "./billList/bill-list.component";
 import {CheckinComponent} from "./checkIn/checkin.component";
-
-import { MapHotelComponent } from './map-hotel/map-hotel.component';
-
+import {ListRoomComponent} from "./listRoom/list-room.component";
+import {ChartComponent} from "./chart/chart.component";
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +19,6 @@ const routes: Routes = [{
       data: {breadcrumb: 'Dashboard'},
     },
     {
-
       path: 'check-in',
       component: CheckinComponent,
       data: {breadcrumb: 'Đặt phòng'},
@@ -35,11 +32,16 @@ const routes: Routes = [{
       path: 'bill-list',
       component: BillListComponent,
       data: {breadcrumb: 'Danh sách hóa đơn'},
-
-      path: 'map-hotel',
-      component: MapHotelComponent,
-      data: {breadcrumb: 'Map-hotel'},
-
+    },
+    {
+      path: 'list-room',
+      component: ListRoomComponent,
+      data: {breadcrumb: 'Danh sách phòng'},
+    },
+    {
+      path: 'chart',
+      component: ChartComponent,
+      data: {breadcrumb: 'Biểu đồ lượt khách'},
     },
   ],
 }];
