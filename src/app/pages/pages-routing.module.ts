@@ -3,9 +3,13 @@ import {NgModule} from '@angular/core';
 
 import {PagesComponent} from './pages.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
+
 import {CheckoutComponent} from "./checkOut/checkout.component";
 import {BillListComponent} from "./billList/bill-list.component";
 import {CheckinComponent} from "./checkIn/checkin.component";
+
+import { MapHotelComponent } from './map-hotel/map-hotel.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -17,6 +21,7 @@ const routes: Routes = [{
       data: {breadcrumb: 'Dashboard'},
     },
     {
+
       path: 'check-in',
       component: CheckinComponent,
       data: {breadcrumb: 'Đặt phòng'},
@@ -30,6 +35,11 @@ const routes: Routes = [{
       path: 'bill-list',
       component: BillListComponent,
       data: {breadcrumb: 'Danh sách hóa đơn'},
+
+      path: 'map-hotel',
+      component: MapHotelComponent,
+      data: {breadcrumb: 'Map-hotel'},
+
     },
   ],
 }];

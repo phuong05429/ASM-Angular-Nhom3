@@ -46,6 +46,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
 
  
+  
   {
     title: 'Tiền chi & tiền thu',
     icon: 'trending-up-outline',
@@ -82,7 +83,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-
-
 
 ];
