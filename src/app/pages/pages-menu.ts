@@ -21,7 +21,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Khách sạn',
     icon: 'home-outline',
-    link: '/pages/hotel',
+    link: '/pages/hotels',
   },
   {
     title: 'Loại phòng & giá',

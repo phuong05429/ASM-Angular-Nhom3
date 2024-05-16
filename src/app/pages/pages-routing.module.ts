@@ -7,6 +7,7 @@ import {CheckoutComponent} from "./checkOut/checkout.component";
 import {BillListComponent} from "./billList/bill-list.component";
 import {CheckinComponent} from "./checkIn/checkin.component";
 import {ListRoomComponent} from "./listRoom/list-room.component";
+import {HotelsComponent} from "./hotels/hotels.component";
 import {ChartComponent} from "./chart/chart.component";
 
 const routes: Routes = [{
@@ -42,6 +43,11 @@ const routes: Routes = [{
       path: 'chart',
       component: ChartComponent,
       data: {breadcrumb: 'Biểu đồ lượt khách'},
+    },
+    {
+      path: 'hotels',
+      component: HotelsComponent,
+      data: {breadcrumb: 'Khách Sạn'},
     },
   ],
 }];
