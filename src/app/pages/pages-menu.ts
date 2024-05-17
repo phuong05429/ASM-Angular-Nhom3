@@ -65,11 +65,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Công nợ',
-    icon: 'credit-outline',
-    link: '/pages/credit',
-  },
-  {
     title: 'Tiền chi & tiền thu',
     icon: 'trending-up-outline',
     link: '/pages/expenditure',
@@ -91,17 +86,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Kiểm tra $ tài khoản', // Tiêu đề mục con
         icon: 'credit-card-outline', // Icon của mục con
-        link: '/pages/dashboard', // Đường dẫn của mục con
+        link: '/pages/', // Đường dẫn của mục con
       },
       {
         title: 'Kết quả kinh doanh', // Tiêu đề mục con
         icon: 'trending-up-outline', // Icon của mục con
-        link: '/pages/dashboard', // Đường dẫn của mục con
+        link: '/pages/', // Đường dẫn của mục con
       },
       {
         title: 'Báo cáo', // Tiêu đề mục con
         icon: 'file-text-outline', // Icon của mục con
-        link: '/pages/dashboard', // Đường dẫn của mục con
+        link: '/pages/', // Đường dẫn của mục con
       },
       {
         title: 'Biểu đồ', // Tiêu đề mục con

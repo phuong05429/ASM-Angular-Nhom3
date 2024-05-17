@@ -3,17 +3,59 @@
 @import '@nebular/theme/styles/global/breakpoints';
 
 @include nb-install-component() {
-  h4{
+  h4 {
     text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333; // Darker color for better readability
   }
-  .solar-card nb-card-header {
-    border: none;
-    padding-bottom: 0;
+
+  .solar-card {
+    nb-card-header {
+      border: none;
+      padding-bottom: 0;
+      font-size: 1.25rem; // Slightly larger font size for headers
+      font-weight: 600; // Bold text for emphasis
+      color: #555; // Medium-dark color for text
+    }
+
+    nb-card {
+      border-radius: 8px; // Rounded corners for a modern look
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+      margin-bottom: 1.5rem; // Space between cards
+      padding: 1rem; // Padding inside cards for better spacing
+    }
   }
 
   @include media-breakpoint-down(sm) {
     ngx-traffic {
       display: none;
+    }
+
+    .solar-card {
+      nb-card {
+        margin-bottom: 1rem; // Reduced margin for smaller screens
+        padding: 0.75rem; // Adjusted padding for smaller screens
+      }
+
+      h4 {
+        font-size: 1.25rem; // Smaller font size for smaller screens
+        margin-bottom: 0.75rem; // Adjusted margin for better spacing
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .solar-card {
+      nb-card {
+        padding: 1.5rem; // More padding for larger screens
+        margin-bottom: 2rem; // More space between cards for larger screens
+      }
+
+      h4 {
+        font-size: 1.75rem; // Larger font size for larger screens
+        margin-bottom: 1.5rem; // More margin for better spacing
+      }
     }
   }
 }

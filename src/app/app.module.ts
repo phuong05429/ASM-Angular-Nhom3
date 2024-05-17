@@ -14,7 +14,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {CoreModule} from "./@core/core.module";
 import {ThemeModule} from "./@theme/theme.module";
 
-import { MapHotelComponent } from './pages/map-hotel/map-hotel.component';
 import { UserComponent } from './pages/user/user.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -26,7 +25,6 @@ import { OutfitComponent } from './pages/outfit/outfit.component';
     AppComponent,
 
 
-    MapHotelComponent,
     UserComponent,
     HomeComponent,
     MenuComponent,
