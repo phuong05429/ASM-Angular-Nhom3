@@ -3,12 +3,19 @@ import {NgModule} from '@angular/core';
 
 import {PagesComponent} from './pages.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
+
 import {CheckoutComponent} from "./checkOut/checkout.component";
 import {BillListComponent} from "./billList/bill-list.component";
 import {CheckinComponent} from "./checkIn/checkin.component";
 import {ListRoomComponent} from "./listRoom/list-room.component";
 import {HotelsComponent} from "./hotels/hotels.component";
 import {ChartComponent} from "./chart/chart.component";
+
+import { MapHotelComponent } from './map-hotel/map-hotel.component';
+import { UserComponent } from './user/user.component';
+import { MenuComponent } from './menu/menu.component';
+import { OutfitComponent } from './outfit/outfit.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -48,6 +55,21 @@ const routes: Routes = [{
       path: 'hotels',
       component: HotelsComponent,
       data: {breadcrumb: 'Khách Sạn'},
+    },
+    {
+      path: 'user',
+      component: UserComponent,
+      data: {breadcrumb: 'user'},
+    },
+    {
+      path: 'menu',
+      component: MenuComponent,
+      data: {breadcrumb: 'menu'},
+    },
+    {
+      path: 'outfit',
+      component: OutfitComponent,
+      data: {breadcrumb: 'outfit'},
     },
   ],
 }];
