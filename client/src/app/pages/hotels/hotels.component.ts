@@ -86,6 +86,7 @@ export class HotelsComponent implements OnInit {
         });
       }
     }
+    this.closeDialog()
   }
 
   editHotel(hotel: HotelModel): void {
