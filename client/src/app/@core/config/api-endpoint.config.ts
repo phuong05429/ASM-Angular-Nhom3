@@ -9,4 +9,10 @@ export const API_ENDPOINT: IAPIEndpoint = {
     login: '/auth/login',
     logout: '/auth/logout',
   },
+  hotels:{
+    base:API_BASE_URL + '/hotels',
+    add:API_BASE_URL + '/hotel',
+    edit:API_BASE_URL + '/hotel',
+    delete:API_BASE_URL + '/hotel',
+  }
 };

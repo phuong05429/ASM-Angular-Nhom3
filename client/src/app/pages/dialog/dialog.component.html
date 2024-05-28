@@ -1,0 +1,14 @@
+<div class="dialog-backdrop" *ngIf="isOpen">
+  <div class="dialog">
+    <div class="dialog-header">
+      <h3>{{ title }}</h3>
+      <button (click)="close()">X</button>
+    </div>
+    <div class="dialog-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="dialog-footer">
+      <button (click)="close()">Close</button>
+    </div>
+  </div>
+</div>
