@@ -1,9 +1,13 @@
 const sequelize = require('../config/db');
+const Floor = require('./floor');
 const Hotel = require('./hotelModel');
+const RoomTypePrice = require('./rooms');
 
 const db = {
   sequelize,
-  Hotel
+  Hotel,
+  RoomTypePrice,
+  Floor
 };
 
 // Đồng bộ các model với cơ sở dữ liệu

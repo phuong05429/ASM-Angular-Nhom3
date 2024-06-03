@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const hotelRoutes = require('./routes/hotelRoutes');
+const settingRoutes = require('./routes/settingRoutes');
+const roomRoutes = require('./routes/roomRoutes');
+const checkInRoutes = require('./routes/checkInRoutes');
 const { sequelize } = require('./models');
 const cors = require('cors');
 const app = express();
@@ -22,6 +25,9 @@ app.use(cors({
 }));
 
 app.use('/api/', hotelRoutes);
+app.use('/api/', settingRoutes);
+app.use('/api/', roomRoutes);
+app.use('/api/', checkInRoutes);
 
 app.listen(port, async () => {
   await sequelize.sync();

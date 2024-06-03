@@ -16,21 +16,12 @@
 
   <div class="row">
     <!-- Floor 1 -->
-    <div
-      *ngFor="let hotel of hotels"
-      class="col-2"
-      style="width: 25%; margin-top: 12px"
-    >
+    <div *ngFor="let hotel of hotels" class="col-2" style="width: 25%; margin-top: 12px">
       <div class="room red">
         <img class="img-hotel" [src]="hotel.image" alt="{{ hotel.name }}" />
       </div>
       <p>{{ hotel.name }}</p>
-      <button
-        type="button"
-        class="btn btn-danger"
-        style="margin-right: 12px"
-        (click)="deleteHotel(hotel.id)"
-      >
+      <button type="button" class="btn btn-danger" style="margin-right: 12px" (click)="deleteHotel(hotel.id)">
         Xóa
       </button>
       <button type="button" class="btn btn-warning" (click)="editHotel(hotel)">
@@ -38,56 +29,43 @@
       </button>
     </div>
   </div>
- 
+
 </div>
-<app-dialog
-  [isOpen]="isDialogOpen"
-  title="Thêm Khách Sạn"
-  (closeModal)="closeDialog()"
->
-  <form  [formGroup]="formData" (ngSubmit)="addHotel()">
+
+<app-dialog [isOpen]="isDialogOpen" title="Thêm Khách Sạn" (closeModal)="closeDialog()">
+  <form [formGroup]="formData" (ngSubmit)="addHotel()">
     <div class="mb-3">
       <label for="hotelName" class="form-label">Tên Khách Sạn</label>
-      <input
-        type="text"
-        class="form-control"
-        id="hotelName"
-        placeholder="Nhập tên khách sạn"
-        formControlName="name"
-      />
+      <input type="text" class="form-control" id="hotelName" placeholder="Nhập tên khách sạn" formControlName="name" />
+      <div class="text-danger" *ngIf="formData.get('name')!.invalid && formData.get('name')!.touched">
+        <ng-container *ngIf="formData.get('name')!.errors?.required">
+          Tên bắt buộc nhập!
+        </ng-container>
+      </div>
     </div>
     <div class="mb-3">
       <label for="price" class="form-label">Giá</label>
-
-      <input
-        type="number"
-        class="form-control"
-        id="price"
-        placeholder="Nhập giá"
-        formControlName="price"
-      />
+      <input type="number" class="form-control" id="price" placeholder="Nhập giá" formControlName="price" />
+      <div class="text-danger" *ngIf="formData.get('price')!.invalid && formData.get('price')!.touched">
+        <ng-container *ngIf="formData.get('price')!.errors?.required">
+          Giá bắt buộc nhập!
+        </ng-container>
+      </div>
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">Hình Ảnh</label>
-      <input
-        type="text"
-        class="form-control"
-        id="image"
-        placeholder="Nhập đường dẫn ảnh"
-        formControlName="image"
-      />
-
+      <input type="text" class="form-control" id="image" placeholder="Nhập đường dẫn ảnh" formControlName="image" />
+      <div class="text-danger" *ngIf="formData.get('image')!.invalid && formData.get('image')!.touched">
+        <ng-container *ngIf="formData.get('image')!.errors?.required">
+          Hình ảnh bắt buộc nhập!
+        </ng-container>
+      </div>
       <!-- <input type="file" class="form-control-file" id="image"> -->
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Mô Tả</label>
-      <textarea
-        class="form-control"
-        id="description"
-        rows="3"
-        placeholder="Nhập mô tả"
-        formControlName="description"
-      ></textarea>
+      <textarea class="form-control" id="description" rows="3" placeholder="Nhập mô tả"
+        formControlName="description"></textarea>
     </div>
     <button type="submit" class="btn btn-primary w-100">Lưu</button>
   </form>

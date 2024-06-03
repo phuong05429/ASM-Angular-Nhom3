@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import {ListRoomComponent} from './list-room.component';
+import {SettingsComponent} from './settings.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
 @NgModule({
   imports: [
     BreadcrumbModule
   ],
   declarations: [
+    
   ],
 })
-export class ListRoomModule { }
+export class SettingsModule { }

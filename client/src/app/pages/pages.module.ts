@@ -15,16 +15,18 @@ import {PagesRoutingModule} from './pages-routing.module';
 import {PaginatorModule} from "../@theme/components/paginator/paginator.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelsComponent } from './hotels/hotels.component';
+import { ListRoomComponent } from './listRoom/list-room.component';
+import { SettingsComponent } from './settings/settings.component';
+import { CheckinComponent } from './checkIn/checkin.component';
 
 @NgModule({
   imports: [
     PagesRoutingModule,
     ThemeModule,
     DashboardModule,
-    CheckindModule,
     CheckoutdModule,
     BillListModule,
-    ListRoomModule,
+    // ListRoomModule,
     // HotelsModule,
     ChartModule,
     NbMenuModule,
@@ -32,7 +34,7 @@ import { HotelsComponent } from './hotels/hotels.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [PagesComponent, HotelsComponent, DialogComponent],
+  declarations: [PagesComponent, HotelsComponent, DialogComponent,ListRoomComponent,SettingsComponent,CheckinComponent],
   providers: [],
 })
 export class PagesModule { }

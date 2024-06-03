@@ -110,4 +110,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'Cài đặt',
+    icon: 'settings-outline', 
+    link: '/pages/settings', 
+  },
 ];

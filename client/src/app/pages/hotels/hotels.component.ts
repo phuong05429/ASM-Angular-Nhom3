@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotelModel } from 'app/@core/model/hotel.model';
 import { HotelsService } from 'app/@core/services/apis/hotels.service';
 
@@ -10,26 +10,28 @@ import { HotelsService } from 'app/@core/services/apis/hotels.service';
 })
 export class HotelsComponent implements OnInit {
   isDialogOpen: boolean = false;
+  formData: FormGroup;
   hotels: HotelModel[] = [];
-  formData:FormGroup;
   isEdit = false;
   editHotelId: string | null = null;
-  constructor(private hotelsService: HotelsService) {}
+  title: string;
+  dataHotels: HotelModel[];
+  constructor(private hotelsService: HotelsService) { }
   ngOnInit(): void {
     this.loadHotels();
     this.formData = new FormGroup({
-      name:new FormControl(''),
-      price:new FormControl(''),
-      image:new FormControl(''),
-      description:new FormControl(''),
+      name: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
     })
   }
 
   loadHotels(): void {
     this.hotelsService.getHotels().subscribe({
       next: (res) => {
-        const {data,status} = res
-        if(status == 'success'){
+        const { data, status } = res
+        if (status == 'success') {
           this.hotels = data.hotels;
         }
       },
@@ -38,8 +40,17 @@ export class HotelsComponent implements OnInit {
       }
     });
   }
-
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
   addHotel(): void {
+    this.markFormGroupTouched(this.formData);
+    if (this.formData.valid) {
     if (!this.isEdit) {
       // Thêm mới khách sạn
       const newHotel: HotelModel = {
@@ -48,7 +59,6 @@ export class HotelsComponent implements OnInit {
         image: this.formData.value.image,
         description: this.formData.value.description,
       };
-
       this.hotelsService.addHotel(newHotel).subscribe({
         next: (res) => {
           console.log('Khách sạn đã được thêm:', res);
@@ -75,9 +85,7 @@ export class HotelsComponent implements OnInit {
         this.hotelsService.editHotel(editedHotel).subscribe({
           next: (res) => {
             console.log('Khách sạn đã được sửa:', res);
-            // Đóng dialog sau khi sửa thành công
             this.isDialogOpen = false;
-            // Lấy lại danh sách khách sạn sau khi sửa
             this.loadHotels();
           },
           error: (err) => {
@@ -87,6 +95,7 @@ export class HotelsComponent implements OnInit {
       }
     }
     this.closeDialog()
+  }
   }
 
   editHotel(hotel: HotelModel): void {
@@ -116,6 +125,7 @@ export class HotelsComponent implements OnInit {
   openDialog() {
     this.isDialogOpen = true;
   }
+
   closeDialog() {
     this.isDialogOpen = false;
     this.isEdit = false;

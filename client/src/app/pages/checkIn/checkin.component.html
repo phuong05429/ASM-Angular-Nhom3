@@ -1,43 +1,158 @@
-<div class="container mt-5">
-  <h2 class="text-center">Thông tin đăng ký</h2>
-  <form>
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Danh sách phòng đã đặt</h2>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-success" (click)="openDialog()">
+              Thêm mới
+            </button>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th style="width: 20%">Tên khách hàng</th>
+            <th style="width: 15%">Email</th>
+            <th style="width: 15%">Số điện thoại</th>
+            <th style="width: 10%">CCCD</th>
+            <th style="width: 10%">Số phòng</th>
+            <th style="width: 10%">Thời gian thuê</th>
+            <th style="width: 10%">Giá phòng</th>
+            <th style="width: 10%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let checkin of checkinList">
+            <td>{{ checkin.name }}</td>
+            <td>{{ checkin.email }}</td>
+            <td>{{ checkin.phone }}</td>
+            <td>{{ checkin.cccd }}</td>
+            <td>{{ checkin.room }}</td>
+            <td>{{ checkin.times }}</td>
+            <td>{{ checkin.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) }}</td>
+            <td>
+              <p (click)="checkout(checkin.id)">Tra Phong</p>
+            </td>
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-dialog
+  [isOpen]="isDialogOpen"
+  title="Đặt phòng"
+  (closeModal)="closeDialog()"
+>
+  <form [formGroup]="formData" (ngSubmit)="add()">
     <div class="mb-3">
-      <label for="fullName" class="form-label">Họ và tên:</label>
-      <input type="text" class="form-control" id="fullName" placeholder="Nhập họ và tên của bạn">
+      <label for="name" class="form-label">Họ và tên:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Họ tên của khách sạn"
+        formControlName="name"
+      />
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email của bạn">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Nhập địa chỉ email"
+        formControlName="email"
+      />
     </div>
     <div class="mb-3">
       <label for="phone" class="form-label">Số điện thoại:</label>
-      <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại của bạn">
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        placeholder="Nhập số điện thoại của bạn"
+        formControlName="phone"
+      />
     </div>
     <div class="mb-3">
-      <label for="idCard" class="form-label">Căn cước công dân:</label>
-      <input type="text" class="form-control" id="idCard" placeholder="Nhập số căn cước công dân của bạn">
+      <label for="CCCD" class="form-label">Căn cước công dân:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="CCCD"
+        placeholder="Nhập số căn cước công dân của bạn"
+        formControlName="cccd"
+      />
     </div>
     <div class="mb-3">
       <label for="roomType" class="form-label">Loại phòng:</label>
-      <select class="form-select" id="roomType">
-        <option selected>Chọn loại phòng</option>
-        <option value="standard">Phòng tiêu chuẩn</option>
-        <option value="deluxe">Phòng sang trọng</option>
-        <option value="suite">Suite</option>
+      <select
+        id="roomType"
+        class="form-select"
+        formControlName="roomType"
+        (change)="updatePrice()"
+      >
+        <option *ngFor="let room of roomTypes" [value]="room.value">
+          {{ room.type }}
+        </option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="roomPrice" class="form-label">Giá phòng (VNĐ):</label>
-      <input type="number" class="form-control" id="roomPrice" placeholder="Nhập giá phòng">
+      <label for="room" class="form-label">Danh sách phòng</label>
+      <select id="room" class="form-select" formControlName="room">
+        <option *ngFor="let room of rooms" [value]="room.id">
+          {{ room.name }}
+        </option>
+      </select>
     </div>
     <div class="mb-3">
+      <label for="times" class="form-label">Thời gian thuê</label>
+      <select
+        id="times"
+        class="form-select"
+        formControlName="times"
+        (change)="updateTime()"
+      >
+        <option value="hour">Giờ</option>
+        <option value="overnight">Qua đêm</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá phòng (VNĐ):</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        placeholder="Giá phòng"
+        formControlName="price"
+        disabled=""
+      />
+    </div>
+    <!-- <div class="mb-3">
       <label for="checkInDate" class="form-label">Ngày nhận phòng:</label>
-      <input type="date" class="form-control" id="checkInDate">
-    </div>
-    <div class="mb-3">
-      <label for="checkOutDate" class="form-label">Ngày trả phòng:</label>
-      <input type="date" class="form-control" id="checkOutDate">
-    </div>
+      <input type="date" class="form-control" id="checkInDate" formControlName="checkInDate"/>
+    </div> -->
+
     <button type="submit" class="btn btn-primary">Đặt phòng</button>
   </form>
-</div>
+</app-dialog>
+

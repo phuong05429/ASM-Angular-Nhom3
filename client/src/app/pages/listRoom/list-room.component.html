@@ -3,156 +3,143 @@
     <div class="col-12">
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group" role="group">
-          <button type="button" class="btn green">Trống</button>
-          <button type="button" class="btn red">Đang ở</button>
-          <button type="button" class="btn grey">Dọn dẹp</button>
-          
+          <button type="button" class="btn green" (click)="loadRooms('available')">Trống</button>
+          <button type="button" class="btn red" (click)="loadRooms('occupied')">Đang ở</button>
+          <button type="button" class="btn gray" (click)="loadRooms()">Tất cả</button>
         </div>
-        <button type="button" class="btn btn-light">Sắp xếp theo tầng</button>
+        <button type="button" class="btn btn-light" (click)="openDialog()">
+          Thêm mới phòng
+        </button>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <!-- Floor 1 -->
-    <div class="col-12 mb-2"><strong>Lầu 1</strong></div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">101</div>
-        Anh An
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">102</div>
-        Trần Anh Vũ<br>
-        Tour 2 ngày Phú Quốc
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room green">
-        <div class="room-status">103</div>
-        <br>Khách đoàn
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room green">
-        <div class="room-status">104</div>
-        <br>Khách đoàn
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">105</div>
-        Nguyễn Đình Vũ<br>
+    <!-- Loop through rooms -->
+    <div class="col-12 mb-2" *ngFor="let room of roomsByFloor">
+      <strong>Lầu {{ room.floor }}</strong>
+      <div class="row">
+        <div class="col-2" *ngFor="let roomItem of room.rooms">
+          <div
+            class="room"
+            (click)="editRoom(roomItem)"
+            [ngClass]="{
+              green: roomItem.status === 'available',
+              red: roomItem.status === 'occupied',
+              grey: roomItem.status === 'cleaning'
+            }"
+          >
+            <div class="room-status">{{ roomItem.name }}</div>
+            <div>{{ roomItem.status }}</div>
+            <span class="delete-icon" (click)="deleteRoom(roomItem)"
+              >&times;</span
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row mt-4">
-    <!-- Floor 2 -->
-    <div class="col-12 mb-2"><strong>Lầu 2</strong></div>
-    <div class="col-2">
-      <div class="room grey">
-        <div class="room-status">201</div>
-        Dọn dẹp
-      </div>
+<app-dialog
+  [isOpen]="isDialogOpen"
+  title="Thêm phòng"
+  (closeModal)="closeDialog()"
+>
+  <form [formGroup]="formData" (ngSubmit)="addRoom()">
+    <div class="mb-3">
+      <label for="hotelName" class="form-label">Tên phòng</label>
+      <input
+        type="text"
+        class="form-control"
+        id="hotelName"
+        placeholder="Nhập phòng"
+        formControlName="name"
+      />
     </div>
-    <div class="col-2">
-      <div class="room green">
-        <div class="room-status">202</div>
-        <br>Khách đoàn
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">203</div>
-        Nguyễn Văn An, Trần Thanh Hằng<br>
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">204</div>
-        Khách Lẻ<br>
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room green">
-        <div class="room-status">205</div>
-        <br>Khách đoàn
-      </div>
-    </div>
-  </div>
 
-  <div class="row mt-4">
-    <!-- Floor 3 -->
-    <div class="col-12 mb-2"><strong>Lầu 3</strong></div>
-    <div class="col-2">
-      <div class="room grey">
-        <div class="room-status">301</div>
-        Dọn dẹp
-      </div>
+    <div class="mb-3">
+      <label for="roomType" class="form-label">Loại phòng</label>
+      <select
+        id="roomType"
+        class="form-select"
+        formControlName="roomType"
+        (change)="updatePrice()"
+      >
+        <option *ngFor="let room of roomTypes" [value]="room.value">
+          {{ room.type }}
+        </option>
+      </select>
     </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">302</div>
-        Nguyễn Văn A<br>
-        8 lần: 19,601,120
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">303</div>
-        Trần Văn Giàu<br>
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room grey">
-        <div class="room-status">304</div>
-        Dọn dẹp
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">305</div>
-        Mr Petter<br>
-      </div>
-    </div>
-  </div>
 
-  <div class="row mt-4">
-    <!-- Floor 4 -->
-    <div class="col-12 mb-2"><strong>Lầu 4</strong></div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">401</div>
-        Sala Janson<br>
-        <span class="badge bg-warning">5 phút</span>
-      </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá phòng 1 giờ</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        placeholder="Nhập giá"
+        formControlName="price"
+        disabled=""
+      />
     </div>
-    <div class="col-2">
-      <div class="room green">
-        <div class="room-status">402</div>
-        <br>Khách đoàn
-      </div>
+
+    <div class="mb-3">
+      <label for="overnight" class="form-label">Giá phòng qua đêm</label>
+      <input
+        type="number"
+        class="form-control"
+        id="overnight"
+        placeholder="Nhập giá"
+        formControlName="overnight"
+        disabled=""
+      />
     </div>
-    <div class="col-2">
-      <div class="room grey">
-        <div class="room-status">403</div>
-        Dọn dẹp
-      </div>
+
+    <div class="mb-3">
+      <label for="floor" class="form-label">Tầng</label>
+      <select id="floor" class="form-select" formControlName="floor">
+        <option *ngFor="let floor of floors" [value]="floor">
+          {{ floor }}
+        </option>
+      </select>
     </div>
-    <div class="col-2">
-      <div class="room red">
-        <div class="room-status">404</div>
-        <br>Khách lẻ
-      </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô Tả</label>
+      <textarea
+        class="form-control"
+        id="description"
+        rows="3"
+        placeholder="Nhập mô tả"
+        formControlName="description"
+      ></textarea>
     </div>
-    <div class="col-2">
-      <div class="room green">
-        <div class="room-status">405</div>
-        <br>Khách đoàn
-      </div>
+    <button type="submit" class="btn btn-primary w-100">Lưu</button>
+  </form>
+</app-dialog>
+
+<div class="dialog-backdrop" *ngIf="isOpenDelete">
+  <div class="dialog">
+    <div class="dialog-header">
+      <h5 class="modal-title">Confirm Delete</h5>
+    </div>
+    <div class="modal-body">
+      Bạn có muốn xóa phòng {{ selectedRoom?.name }}?
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        style="margin: 0 10px"
+        class="btn btn-secondary"
+        (click)="closeDialogDelete()"
+        data-bs-dismiss="modal"
+      >
+        Hủy
+      </button>
+      <button type="button" class="btn btn-danger" (click)="deleteHotel()">
+        Xóa
+      </button>
     </div>
   </div>
 </div>

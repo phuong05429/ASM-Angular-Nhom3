@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h2>Cài đặt</h2>
+  <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="roomType" class="form-label">Loại phòng</label>
+      <select id="roomType" class="form-select" formControlName="roomType" (change)="updatePrice()">
+        <option *ngFor="let room of roomTypes" [value]="room.value">{{ room.type }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá 1 giờ</label>
+      <input type="number" id="price" class="form-control" formControlName="price"  />
+    </div>
+
+    <div class="mb-3">
+      <label for="overnight" class="form-label">Giá qua đêm</label>
+      <input type="number" id="overnight" class="form-control" formControlName="overnight"  />
+    </div>
+
+    <div class="mb-3">
+      <label for="floor" class="form-label">Tầng</label>
+      <input type="number" id="floor" class="form-control" formControlName="floor"  />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+  </form>
+</div>

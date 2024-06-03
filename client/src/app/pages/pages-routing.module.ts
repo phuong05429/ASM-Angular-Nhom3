@@ -14,6 +14,7 @@ import {ChartComponent} from "./chart/chart.component";
 import { UserComponent } from './user/user.component';
 import { MenuComponent } from './menu/menu.component';
 import { OutfitComponent } from './outfit/outfit.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [{
@@ -50,11 +51,7 @@ const routes: Routes = [{
       component: ChartComponent,
       data: {breadcrumb: 'Biểu đồ lượt khách'},
     },
-    {
-      path: 'hotels',
-      component: HotelsComponent,
-      data: {breadcrumb: 'Khách Sạn'},
-    },
+   
     {
       path: 'user',
       component: UserComponent,
@@ -69,6 +66,16 @@ const routes: Routes = [{
       path: 'outfit',
       component: OutfitComponent,
       data: {breadcrumb: 'outfit'},
+    },
+    {
+      path: 'hotels',
+      component: HotelsComponent,
+      data: {breadcrumb: 'Khách Sạn'},
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent,
+      data: {breadcrumb: 'Cài đặt'},
     },
   ],
 }];
