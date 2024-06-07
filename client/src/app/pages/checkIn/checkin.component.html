@@ -21,26 +21,24 @@
             <th style="width: 15%">Số điện thoại</th>
             <th style="width: 10%">CCCD</th>
             <th style="width: 10%">Số phòng</th>
-            <th style="width: 10%">Thời gian thuê</th>
+            <th style="width: 10%">Loại thuê</th>
+            <th style="width: 10%">Ngày vào</th>
             <th style="width: 10%">Giá phòng</th>
-            <th style="width: 10%">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let checkin of checkinList">
-            <td>{{ checkin.name }}</td>
+            <td><h6 (click)="checkout(checkin)" style="font-size: 16px;font-weight: 400; text-decoration: underline;cursor: pointer;">{{ checkin.name }}</h6></td>
             <td>{{ checkin.email }}</td>
             <td>{{ checkin.phone }}</td>
             <td>{{ checkin.cccd }}</td>
-            <td>{{ checkin.room }}</td>
+            <td>{{ checkin.roomName }}</td>
             <td>{{ checkin.times }}</td>
+            <td>{{ checkin.checkInDate }}</td>
             <td>{{ checkin.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) }}</td>
-            <td>
-              <p (click)="checkout(checkin.id)">Tra Phong</p>
-            </td>
         </tbody>
       </table>
-      <div class="clearfix">
+      <!-- <div class="clearfix">
         <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
         <ul class="pagination">
           <li class="page-item disabled"><a href="#">Previous</a></li>
@@ -51,7 +49,7 @@
           <li class="page-item"><a href="#" class="page-link">5</a></li>
           <li class="page-item"><a href="#" class="page-link">Next</a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -152,7 +150,7 @@
       <input type="date" class="form-control" id="checkInDate" formControlName="checkInDate"/>
     </div> -->
 
-    <button type="submit" class="btn btn-primary">Đặt phòng</button>
+    <button type="submit" class="btn btn-primary" >Đặt phòng</button>
   </form>
 </app-dialog>
 

@@ -12,6 +12,22 @@ export class DateUtil {
     return null;
   }
 
+  public static convertFullTime(inputDate: any) {
+    const date = this.initDate(inputDate);
+    if (date) {
+      const month = `${date.getMonth() + 1}`;
+      const day = `${date.getDate()}`;
+      const hours = `${date.getHours() + 1}`;
+      const minutes = `${date.getMinutes()}`;
+      const seconds = `${date.getSeconds()}`;
+      return inputDate ?
+          `${day.padStart(2, '0')}-${month.padStart(2, '0')}-${date.getFullYear()} ${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}` :
+          null;
+    }
+
+    return null;
+  }
+
   public static convertUTC(inputDate: any) {
     const date = this.initDate(inputDate);
     if (date) {

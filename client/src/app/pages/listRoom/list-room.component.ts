@@ -56,7 +56,10 @@ export class ListRoomComponent implements OnInit {
       next: (res) => {
         const { data, status } = res;
         if (status == 'success') {
-          this.rooms = data.rooms;
+          this.rooms = data.rooms?.map(room=>({
+            ...room,
+            roomName:this.roomTypes.filter(r=>r.value==room.roomType)?.[0].type
+          }));
         }
       },
       error: (err) => {

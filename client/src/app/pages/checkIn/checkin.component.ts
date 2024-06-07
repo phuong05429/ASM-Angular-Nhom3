@@ -5,6 +5,7 @@ import { CheckIntModel } from 'app/@core/model/checkin.model';
 import { RoomModel } from 'app/@core/model/room.model';
 import { CheckInService } from 'app/@core/services/apis/checkin.service';
 import { RoomService } from 'app/@core/services/apis/room.service';
+import { DateUtil } from 'app/@core/utils/date.util';
 
 @Component({
   selector: 'ngx-dashboard',
@@ -96,13 +97,9 @@ export class CheckinComponent implements OnInit {
       }
     });
   }
-  checkout(checkinId: number): void {
-    this.router.navigate(['/pages/check-out']); // Điều hướng đến trang checkout với checkinId
-  }
-  add(): void {
-    
-    this.markFormGroupTouched(this.formData);
 
+  add(): void {
+    this.markFormGroupTouched(this.formData);
     if (this.formData.valid) {    
       if (!this.isEdit) {
         // Thêm mới khách sạn
@@ -115,6 +112,7 @@ export class CheckinComponent implements OnInit {
           cccd: this.formData.value.cccd,
           room: this.formData.value.room,
           times: this.formData.value.times,
+          roomName: this.rooms.filter(room=>room.id == this.formData.value.room)?.[0].name
         };
         this.checkinService.addCheckIn(newCheckin).subscribe({
           next: (res) => {
@@ -164,13 +162,20 @@ export class CheckinComponent implements OnInit {
       next: (res) => {
         const { data, status } = res;
         if (status == 'success') {
-          this.checkinList = data.checkIns
+          console.log(data.checkIns);
+          
+          this.checkinList = data.checkIns.map((checkin:any)=>({...checkin,checkInDate:DateUtil.convertFullTime(checkin.checkInDate)}))
         }
       },
       error: (err) => {
         console.error('Error loading hotels', err);
       },
     });
+  }
+
+  checkout(data: any): void {
+    this.router.navigate(['/pages/check-out']);
+    sessionStorage.setItem("customer",JSON.stringify(data))
   }
 
   openDialog() {

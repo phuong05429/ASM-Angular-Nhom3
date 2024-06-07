@@ -23,6 +23,10 @@ const CheckIn = sequelize.define('CheckIn', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  roomName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   phone: {
     type: DataTypes.STRING,
     allowNull: false

@@ -4,11 +4,10 @@ const Room = require('./roomController');
 // Phương thức để tạo mới một check-in
 exports.createCheckIn = async (req, res) => {
   try {
-    const { name, price, email, roomType, phone, cccd, room,times } = req.body;
-    const checkIn = await CheckIn.create({ name, price, email, roomType, phone, cccd, room,times });
+    const { name, price, email, roomType, phone, cccd, room,roomName,times } = req.body;
+    const checkIn = await CheckIn.create({ name, price, email, roomType, phone, cccd, room,roomName,times });
     if(checkIn){
       const update = await Room.updateRoomStatus(room,"occupied")
-      console.log(update);
     }
     res.status(201).json(checkIn);
   } catch (error) {
@@ -71,7 +70,9 @@ exports.deleteCheckIn = async (req, res) => {
     if (!checkIn) {
       return res.status(404).json({ message: 'Check-in not found' });
     }
+    await Room.updateRoomStatus(checkIn.room,"available")
     await checkIn.destroy();
+
     res.status(204).end();
   } catch (error) {
     console.error(error);

@@ -20,20 +20,14 @@
       <strong>Lầu {{ room.floor }}</strong>
       <div class="row">
         <div class="col-2" *ngFor="let roomItem of room.rooms">
-          <div
-            class="room"
-            (click)="editRoom(roomItem)"
-            [ngClass]="{
+          <div class="room" (click)="editRoom(roomItem)" [ngClass]="{
               green: roomItem.status === 'available',
               red: roomItem.status === 'occupied',
               grey: roomItem.status === 'cleaning'
-            }"
-          >
+            }">
             <div class="room-status">{{ roomItem.name }}</div>
-            <div>{{ roomItem.status }}</div>
-            <span class="delete-icon" (click)="deleteRoom(roomItem)"
-              >&times;</span
-            >
+            <div>{{ roomItem.roomName }}</div>
+            <span class="delete-icon" (click)="deleteRoom(roomItem)">&times;</span>
           </div>
         </div>
       </div>
@@ -41,31 +35,21 @@
   </div>
 </div>
 
-<app-dialog
-  [isOpen]="isDialogOpen"
-  title="Thêm phòng"
-  (closeModal)="closeDialog()"
->
+<app-dialog [isOpen]="isDialogOpen" title="Thêm phòng" (closeModal)="closeDialog()">
   <form [formGroup]="formData" (ngSubmit)="addRoom()">
     <div class="mb-3">
       <label for="hotelName" class="form-label">Tên phòng</label>
-      <input
-        type="text"
-        class="form-control"
-        id="hotelName"
-        placeholder="Nhập phòng"
-        formControlName="name"
-      />
+      <input type="text" class="form-control" id="hotelName" placeholder="Nhập phòng" formControlName="name" />
+      <div class="text-danger" *ngIf="formData.get('name')!.invalid && formData.get('name')!.touched">
+        <ng-container *ngIf="formData.get('name')!.errors?.required">
+          Tên bắt buộc nhập!
+        </ng-container>
+      </div>
     </div>
 
     <div class="mb-3">
       <label for="roomType" class="form-label">Loại phòng</label>
-      <select
-        id="roomType"
-        class="form-select"
-        formControlName="roomType"
-        (change)="updatePrice()"
-      >
+      <select id="roomType" class="form-select" formControlName="roomType" (change)="updatePrice()">
         <option *ngFor="let room of roomTypes" [value]="room.value">
           {{ room.type }}
         </option>
@@ -74,26 +58,14 @@
 
     <div class="mb-3">
       <label for="price" class="form-label">Giá phòng 1 giờ</label>
-      <input
-        type="number"
-        class="form-control"
-        id="price"
-        placeholder="Nhập giá"
-        formControlName="price"
-        disabled=""
-      />
+      <input type="number" class="form-control" id="price" placeholder="Nhập giá" formControlName="price" disabled="" />
+      
     </div>
 
     <div class="mb-3">
       <label for="overnight" class="form-label">Giá phòng qua đêm</label>
-      <input
-        type="number"
-        class="form-control"
-        id="overnight"
-        placeholder="Nhập giá"
-        formControlName="overnight"
-        disabled=""
-      />
+      <input type="number" class="form-control" id="overnight" placeholder="Nhập giá" formControlName="overnight"
+        disabled="" />
     </div>
 
     <div class="mb-3">
@@ -107,13 +79,8 @@
 
     <div class="mb-3">
       <label for="description" class="form-label">Mô Tả</label>
-      <textarea
-        class="form-control"
-        id="description"
-        rows="3"
-        placeholder="Nhập mô tả"
-        formControlName="description"
-      ></textarea>
+      <textarea class="form-control" id="description" rows="3" placeholder="Nhập mô tả"
+        formControlName="description"></textarea>
     </div>
     <button type="submit" class="btn btn-primary w-100">Lưu</button>
   </form>
@@ -128,13 +95,8 @@
       Bạn có muốn xóa phòng {{ selectedRoom?.name }}?
     </div>
     <div class="modal-footer">
-      <button
-        type="button"
-        style="margin: 0 10px"
-        class="btn btn-secondary"
-        (click)="closeDialogDelete()"
-        data-bs-dismiss="modal"
-      >
+      <button type="button" style="margin: 0 10px" class="btn btn-secondary" (click)="closeDialogDelete()"
+        data-bs-dismiss="modal">
         Hủy
       </button>
       <button type="button" class="btn btn-danger" (click)="deleteHotel()">
