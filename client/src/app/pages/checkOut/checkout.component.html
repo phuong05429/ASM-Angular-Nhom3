@@ -1,55 +1,60 @@
-<div class="container mt-3">
-    <h1>Hóa đơn thanh toán</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Thông tin</th>
-                <th>Giá tiền</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tên khách hàng</td>
-                <td>{{showData.name}}</td>
-            </tr>
-            <tr>
-              <td>Số phòng</td>
-              <td>{{showData.roomName}}</td>
-          </tr>
-            <tr>
-                <td>Loại phòng</td>
-                <td>{{showData.roomType}}</td>
-            </tr>
-            <tr>
-              <td>Loại thuê</td>
-              <td>{{showData.times == "hour" ? "Theo giờ" : 'Thuê đêm'}}</td>
-          </tr>
-            <tr>
-                <td>Giờ vào</td>
-                <td>{{showData.checkInDate}}</td>
-            </tr>
-            <tr>
-                <td>Giờ trả</td>
-                <td>{{showData.checkOut}}</td>
-            </tr>
-            <tr>
-                <td>Số giờ (đêm)</td>
-                <td>{{showData.diffHrs}}</td>
-            </tr>
-            <tr>
-                <td>Giá phòng</td>
-                <td>{{showData.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}}</td>
-            </tr>
-            <tr>
-                <td>Tổng cộng</td>
-                <td>{{showData.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="btn btn-primary" (click)="thanhToan()">Thanh toán</button>
-  </div>
-  
-  <div class="dialog-backdrop" *ngIf="isOpen">
+
+     <div class="container-lg mt-3 bg-white rounded p-4">
+      <h1>Hóa đơn thanh toán</h1>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Thông tin</th>
+                  <th>Giá tiền</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Tên khách hàng</td>
+                  <td>{{ showData.name }}</td>
+              </tr>
+              <tr>
+                  <td>Số phòng</td>
+                  <td>{{ showData.roomName }}</td>
+              </tr>
+              <tr>
+                  <td>Loại phòng</td>
+                  <td>{{ showData.roomType }}</td>
+              </tr>
+              <tr>
+                  <td>Loại thuê</td>
+                  <td>{{ showData.times == "hour" ? "Theo giờ" : 'Thuê đêm' }}</td>
+              </tr>
+              <tr>
+                  <td>Giờ vào</td>
+                  <td>{{ showData.checkInDate }}</td>
+              </tr>
+              <tr>
+                  <td>Giờ trả</td>
+                  <td>{{ showData.checkOut }}</td>
+              </tr>
+              <tr>
+                  <td>Số giờ (đêm)</td>
+                  <td>{{ showData.diffHrs }}</td>
+              </tr>
+              <tr>
+                  <td>Giá phòng</td>
+                  <td>{{ showData.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) }}</td>
+              </tr>
+              <tr>
+                  <td>Tổng cộng</td>
+                  <td>{{ showData.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) }}</td>
+              </tr>
+          </tbody>
+         
+      </table>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary mt-3" (click)="thanhToan()">Thanh toán</button>
+      </div>
+    </div>
+    
+    
+    <div class="dialog-backdrop" *ngIf="isOpen">
       <div class="dialog">
         <div class="dialog-header">
           <h5 class="modal-title">Xác nhận thanh toán</h5>
