@@ -7,6 +7,7 @@
   text-align: center;
   position: relative;
   cursor: pointer;
+
   .delete-icon {
     position: absolute;
     top: 5px;
@@ -16,10 +17,11 @@
     display: none;
     color: red;
   }
-  
+
   &:hover .delete-icon {
     display: block;
   }
+
   .btn {
     display: none;
   }
@@ -28,6 +30,7 @@
     display: block;
   }
 }
+
 .room-status {
   position: absolute;
   top: 5px;
@@ -37,17 +40,21 @@
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 3px;
 }
+
 .red {
-  background-color: #ff4d4d;
+  background-color: #ff6b6b; /* Màu cam */
 }
+
 .green {
-  background-color: #4dff4d;
+  background-color: #6bff6b; /* Màu xanh lá */
 }
+
 .grey {
-  background-color: #bfbfbf;
+  background-color: #bfbfbf; /* Màu xám */
 }
+
 .blue {
-  background-color: #4d4dff;
+  background-color: #6bcaff; /* Màu xanh nước */
 }
 
 .dialog-backdrop {

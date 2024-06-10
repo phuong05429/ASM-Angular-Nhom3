@@ -64,21 +64,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }
     ],
   },
-  {
-    title: 'Công nợ',
-    icon: 'credit-outline',
-    link: '/pages/credit',
-  },
-  {
-    title: 'Tiền chi & tiền thu',
-    icon: 'trending-up-outline',
-    link: '/pages/expenditure',
-  },
-  {
-    title: 'Doanh thu',
-    icon: 'bar-chart-outline',
-    link: '/pages/income',
-  },
+  
+  
   {
     title: 'Thống kê',
     icon: 'pie-chart-outline', // Icon của mục menu
