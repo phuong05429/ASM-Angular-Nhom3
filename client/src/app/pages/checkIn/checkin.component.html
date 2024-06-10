@@ -1,51 +1,55 @@
-
-    <div class="container-xl">
-      <div class="table-responsive">
-        <div class="table-wrapper">
-          <div class="table-title">
-            <div class="row">
-              <div class="col-sm-6">
-                <h2>Danh sách phòng đã đặt</h2>
-              </div>
-              <div class="col-sm-6">
-                <button class="btn btn-success" (click)="openDialog()">
-                  Thêm mới
-                </button>
-              </div>
-            </div>
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Danh sách phòng đã đặt</h2>
           </div>
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th style="width: 20%">Tên khách hàng</th>
-                <th style="width: 15%">Email</th>
-                <th style="width: 15%">Số điện thoại</th>
-                <th style="width: 10%">CCCD</th>
-                <th style="width: 10%">Số phòng</th>
-                <th style="width: 10%">Loại thuê</th>
-                <th style="width: 10%">Ngày vào</th>
-                <th style="width: 10%">Giá phòng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let checkin of checkinList">
-                <td>
-                  <h6 (click)="checkout(checkin)"
-                    style="font-size: 16px;font-weight: 400; text-decoration: underline;cursor: pointer;">{{ checkin.name }}
-                  </h6>
-                </td>
-                <td>{{ checkin.email }}</td>
-                <td>{{ checkin.phone }}</td>
-                <td>{{ checkin.cccd }}</td>
-                <td>{{ checkin.roomName }}</td>
-                <td>{{ checkin.times }}</td>
-                <td>{{ checkin.checkInDate }}</td>
-                <td>{{ checkin.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) }}</td>
-            </tbody>
-          </table>
+          <div class="col-sm-6">
+            <button class="btn btn-success" (click)="openDialog()">
+              Thêm mới
+            </button>
+          </div>
         </div>
       </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th style="width: 20%">Tên khách hàng</th>
+            <th style="width: 15%">Email</th>
+            <th style="width: 15%">Số điện thoại</th>
+            <th style="width: 10%">CCCD</th>
+            <th style="width: 10%">Số phòng</th>
+            <th style="width: 10%">Loại thuê</th>
+            <th style="width: 10%">Ngày vào</th>
+            <th style="width: 10%">Giá phòng</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let checkin of checkinList">
+            <td>
+              <h6
+                style="font-size: 16px;font-weight: 400; cursor: pointer;">{{ checkin.name }}
+              </h6>
+            </td>
+            <td>{{ checkin.email }}</td>
+            <td>{{ checkin.phone }}</td>
+            <td>{{ checkin.cccd }}</td>
+            <td>{{ checkin.roomName }}</td>
+            <td>{{ checkin.times }}</td>
+            <td>{{ checkin.checkInDate }}</td>
+            <td>{{ checkin.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="checkout(checkin)">Check Out</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 
 <app-dialog [isOpen]="isDialogOpen" title="Đặt phòng" (closeModal)="closeDialog()">
   <form [formGroup]="formData" (ngSubmit)="add()">

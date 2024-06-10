@@ -1,70 +1,64 @@
-<div class="container">
-  <div class="row mt-4">
-    <div class="col">
-      <label for="timeSelect">Chọn thời gian:</label>
-      <select id="timeSelect" class="form-select w-auto d-inline">
-        <option value="168">Trong 168 ngày gần đây (~6 tháng)</option>
-        <!-- Add more options as needed -->
-      </select>
-      <button class="btn btn-primary" (click)="updateChart()">Xem</button>
-    </div>
+<div class="container mt-4 bg-white p-4 rounded">
+  <label for="timeSelect">Chọn thời gian:</label>
+  <select id="timeSelect" class="form-select w-auto d-inline">
+    <option value="168">Trong 168 ngày gần đây (~6 tháng)</option>
+    <!-- Add more options as needed -->
+  </select>
+  <button class="btn btn-primary" (click)="updateChart()">Xem</button>
+
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Thời gian</th>
+          <th>T.2</th>
+          <th>T.3</th>
+          <th>T.4</th>
+          <th>T.5</th>
+          <th>T.6</th>
+          <th>T.7</th>
+          <th>CN</th>
+          <th>T/C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Thuê ngày</td>
+          <td>2</td>
+          <td>3</td>
+          <td>8</td>
+          <td>13</td>
+          <td>12</td>
+          <td>20</td>
+          <td>4</td>
+          <td>62</td>
+        </tr>
+        <tr>
+          <td>Qua đêm</td>
+          <td>0</td>
+          <td>10</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>0</td>
+          <td>1</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>Thuê giờ</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="row mt-4">
-    <div class="col">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Thời gian</th>
-              <th>T.2</th>
-              <th>T.3</th>
-              <th>T.4</th>
-              <th>T.5</th>
-              <th>T.6</th>
-              <th>T.7</th>
-              <th>CN</th>
-              <th>T/C</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Thuê ngày</td>
-              <td>2</td>
-              <td>3</td>
-              <td>8</td>
-              <td>13</td>
-              <td>12</td>
-              <td>20</td>
-              <td>4</td>
-              <td>62</td>
-            </tr>
-            <tr>
-              <td>Qua đêm</td>
-              <td>0</td>
-              <td>10</td>
-              <td>0</td>
-              <td>1</td>
-              <td>2</td>
-              <td>0</td>
-              <td>1</td>
-              <td>14</td>
-            </tr>
-            <tr>
-              <td>Thuê giờ</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+
   <div class="row mt-4">
     <div class="col">
       <div class="chart-container">

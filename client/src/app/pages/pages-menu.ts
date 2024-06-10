@@ -48,12 +48,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Dịch vụ & kho',
+    title: 'Dịch vụ',
     icon: 'cube-outline',
     link: '/pages/',
     children: [
       {
-        title: 'Menu', // Tiêu đề mục con
+        title: 'Thức ăn', // Tiêu đề mục con
         icon: 'add-outline', // Icon của mục con
         link: '../pages/menu', // Đường dẫn của mục con
       },
@@ -75,21 +75,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'list-outline', // Icon của mục con
         link: '/pages/bill-list', // Đường dẫn của mục con
       },
-      {
-        title: 'Kiểm tra $ tài khoản', // Tiêu đề mục con
-        icon: 'credit-card-outline', // Icon của mục con
-        link: '/pages/dashboard', // Đường dẫn của mục con
-      },
-      {
-        title: 'Kết quả kinh doanh', // Tiêu đề mục con
-        icon: 'trending-up-outline', // Icon của mục con
-        link: '/pages/dashboard', // Đường dẫn của mục con
-      },
-      {
-        title: 'Báo cáo', // Tiêu đề mục con
-        icon: 'file-text-outline', // Icon của mục con
-        link: '/pages/dashboard', // Đường dẫn của mục con
-      },
+      
       {
         title: 'Biểu đồ', // Tiêu đề mục con
         icon: 'file-text-outline', // Icon của mục con

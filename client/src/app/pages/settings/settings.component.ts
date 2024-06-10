@@ -11,8 +11,8 @@ export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
   roomTypes = [
     { value:'1',type: 'Phòng đơn', price: 100000, overnight: 200000 },
-    { value:'2',type: 'Phòng 2 ngủ', price: 200000, overnight: 500000 },
-    { value:'3',type: 'Phòng vip', price: 300000, overnight: 800000 },
+    { value:'2',type: 'Phòng đôi', price: 200000, overnight: 500000 },
+    { value:'3',type: 'Phòng VIP', price: 300000, overnight: 800000 },
   ];
 
   constructor(private fb: FormBuilder) {
