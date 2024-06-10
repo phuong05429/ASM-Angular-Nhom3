@@ -1,48 +1,59 @@
 <div class="container mt-5">
-  <h2>Cài đặt</h2>
-  <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label for="roomType" class="form-label">Loại phòng</label>
-      <select id="roomType" class="form-select" formControlName="roomType" (change)="updatePrice()">
-        <div class="text-danger" *ngIf="settingsForm.get('roomType')!.invalid && settingsForm.get('roomType')!.touched">
-          <ng-container *ngIf="settingsForm.get('roomType')!.errors?.required">
-            Bắt buộc chọn loại phòng!
-          </ng-container>
+  <div class="card shadow-sm rounded">
+    <div class="card-body bg-white">
+      <h2>Cài đặt</h2>
+      
+      <!-- Alert success message -->
+      <div *ngIf="isAlertVisible" class="alert alert-success alert-dismissible fade show" role="alert">
+        Lưu thành công!
+        <button type="button" class="btn-close" aria-label="Close" (click)="isAlertVisible = false"></button>
+      </div>
+      
+      <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="roomType" class="form-label">Loại phòng</label>
+          <select id="roomType" class="form-select" formControlName="roomType" (change)="updatePrice()">
+            <div class="text-danger" *ngIf="settingsForm.get('roomType')!.invalid && settingsForm.get('roomType')!.touched">
+              <ng-container *ngIf="settingsForm.get('roomType')!.errors?.required">
+                Bắt buộc chọn loại phòng!
+              </ng-container>
+            </div>
+            <option *ngFor="let room of roomTypes" [value]="room.value">{{ room.type }}</option>
+          </select>
         </div>
-        <option *ngFor="let room of roomTypes" [value]="room.value">{{ room.type }}</option>
-      </select>
-    </div>
 
-    <div class="mb-3">
-      <label for="price" class="form-label">Giá 1 giờ</label>
-      <input type="number" id="price" class="form-control" formControlName="price"  />
-      <div class="text-danger" *ngIf="settingsForm.get('price')!.invalid && settingsForm.get('price')!.touched">
-        <ng-container *ngIf="settingsForm.get('price')!.errors?.required">
-          Vui lòng nhập giá tiền giờ!
-        </ng-container>
-      </div>
-    </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Giá 1 giờ</label>
+          <input type="number" id="price" class="form-control" formControlName="price" />
+          <div class="text-danger" *ngIf="settingsForm.get('price')!.invalid && settingsForm.get('price')!.touched">
+            <ng-container *ngIf="settingsForm.get('price')!.errors?.required">
+              Vui lòng nhập giá tiền giờ!
+            </ng-container>
+          </div>
+        </div>
 
-    <div class="mb-3">
-      <label for="overnight" class="form-label">Giá qua đêm</label>
-      <input type="number" id="overnight" class="form-control" formControlName="overnight"  />
-      <div class="text-danger" *ngIf="settingsForm.get('overnight')!.invalid && settingsForm.get('overnight')!.touched">
-        <ng-container *ngIf="settingsForm.get('overnight')!.errors?.required">
-          Vui lòng nhập giá tiền qua đêm!
-        </ng-container>
-      </div>
-    </div>
+        <div class="mb-3">
+          <label for="overnight" class="form-label">Giá qua đêm</label>
+          <input type="number" id="overnight" class="form-control" formControlName="overnight" />
+          <div class="text-danger" *ngIf="settingsForm.get('overnight')!.invalid && settingsForm.get('overnight')!.touched">
+            <ng-container *ngIf="settingsForm.get('overnight')!.errors?.required">
+              Vui lòng nhập giá tiền qua đêm!
+            </ng-container>
+          </div>
+        </div>
 
-    <div class="mb-3">
-      <label for="floor" class="form-label">Tầng</label>
-      <input type="number" id="floor" class="form-control" formControlName="floor"  />
-      <div class="text-danger" *ngIf="settingsForm.get('floor')!.invalid && settingsForm.get('floor')!.touched">
-        <ng-container *ngIf="settingsForm.get('floor')!.errors?.required">
-          Vui lòng chọn tầng!
-        </ng-container>
-      </div>
-    </div>
+        <div class="mb-3">
+          <label for="floor" class="form-label">Tầng</label>
+          <input type="number" id="floor" class="form-control" formControlName="floor" />
+          <div class="text-danger" *ngIf="settingsForm.get('floor')!.invalid && settingsForm.get('floor')!.touched">
+            <ng-container *ngIf="settingsForm.get('floor')!.errors?.required">
+              Vui lòng chọn tầng!
+            </ng-container>
+          </div>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Lưu</button>
-  </form>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+      </form>
+    </div>
+  </div>
 </div>

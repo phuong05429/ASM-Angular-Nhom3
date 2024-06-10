@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
+  isAlertVisible = false;
   settingsForm: FormGroup;
   roomTypes = [
     { value:'1',type: 'Phòng đơn', price: 100000, overnight: 200000 },
@@ -14,7 +15,14 @@ export class SettingsComponent implements OnInit {
     { value:'3',type: 'Phòng vip', price: 300000, overnight: 800000 },
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.settingsForm = this.fb.group({
+      roomType: ['', Validators.required],
+      price: ['', Validators.required],
+      overnight: ['', Validators.required],
+      floor: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.settingsForm = this.fb.group({
@@ -36,24 +44,25 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.settingsForm.valid) {
-      const settings = this.settingsForm.value;
-      
-      this.roomTypes = this.roomTypes.map((room: any) => {
-        if (room.value == settings.roomType) {
-          return { ...room, price: settings.price, overnight: settings.overnight };
-        } else {
-          return { ...room };
-        }
-      });
-      
-      const listRoomType = JSON.stringify(this.roomTypes);
-      const totalFloor = JSON.stringify(this.settingsForm.value.floor);
-      localStorage.setItem('listRoomType', listRoomType);
-      localStorage.setItem('totalFloor', totalFloor);
+      // Simulate saving data to server
+      // After saving data, show the success alert
+      this.isAlertVisible = true;
 
-      // Add your save logic here
+      // Reset the form after successful submission
+      this.settingsForm.reset();
+
+      // Hide the alert after 3 seconds
+      setTimeout(() => {
+        this.isAlertVisible = false;
+      }, 3000);
+    } else {
+      // Handle invalid form submission
+      // Show validation errors
+      this.settingsForm.markAllAsTouched();
     }
   }
+
+ 
 }

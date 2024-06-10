@@ -5,6 +5,8 @@ const hotelRoutes = require('./routes/hotelRoutes');
 const settingRoutes = require('./routes/settingRoutes');
 const roomRoutes = require('./routes/roomRoutes');
 const checkInRoutes = require('./routes/checkInRoutes');
+const foodRoutes = require('./routes/foodRoutes');
+const cors = require('cors');
 const { sequelize } = require('./models');
 const cors = require('cors');
 const app = express();
@@ -28,6 +30,7 @@ app.use('/api/', hotelRoutes);
 app.use('/api/', settingRoutes);
 app.use('/api/', roomRoutes);
 app.use('/api/', checkInRoutes);
+app.use('/api/', foodRoutes);
 
 app.listen(port, async () => {
   await sequelize.sync();
