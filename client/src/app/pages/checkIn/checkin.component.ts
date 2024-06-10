@@ -33,9 +33,9 @@ export class CheckinComponent implements OnInit {
     this.formData = new FormGroup({
       name: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       roomType: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required,this.phoneNumberValidator]), 
       cccd: new FormControl('', [Validators.required]),
       room: new FormControl('', [Validators.required]),
       times: new FormControl('', [Validators.required]),
@@ -51,6 +51,12 @@ export class CheckinComponent implements OnInit {
     }
     this.load()
   }
+
+   phoneNumberValidator = (control: FormControl): { [key: string]: any } | null => {
+    const valid = /^0\d{9}$/.test(control.value);  // Kiểm tra số điện thoại bắt đầu bằng 0 và có tổng cộng 10 chữ số
+    return valid ? null : { invalidPhoneNumber: true };
+  };
+
 
   loadRooms(roomType?: string): void {
     this.roomService.getTypeRooms(roomType).subscribe({
