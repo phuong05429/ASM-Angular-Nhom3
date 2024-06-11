@@ -29,11 +29,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     // link: '/pages/room-price',
     children: [
       
-      {
-        title: 'Khách Hàng', // Tiêu đề mục con
-        icon: 'add-outline', // Icon của mục con
-        link: '../pages/user', // Đường dẫn của mục con
-      },
+    
       {
         title: 'Đặt phòng', 
         icon: 'add-outline', 
@@ -50,12 +46,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dịch vụ',
     icon: 'cube-outline',
-    link: '/pages/',
+    
     children: [
       {
-        title: 'Thức ăn', // Tiêu đề mục con
+        title: 'Food', // Tiêu đề mục con
         icon: 'add-outline', // Icon của mục con
-        link: '../pages/menu', // Đường dẫn của mục con
+        link: '/pages/food', // Đường dẫn của mục con
       },
       {
         title: 'Trang phục', // Tiêu đề mục con
@@ -65,7 +61,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   
-  
+ 
   {
     title: 'Thống kê',
     icon: 'pie-chart-outline', // Icon của mục menu

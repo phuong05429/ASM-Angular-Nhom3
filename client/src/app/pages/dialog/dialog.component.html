@@ -1,15 +1,16 @@
-<div class="dialog-backdrop" *ngIf="isOpen">
-  <div class="dialog">
-    <div class="dialog-header">
-      <h3>{{ title }}</h3>
-      <span (click)="close()" style="font-size: 20px;" class="pos-right">&times;</span>
+<!-- src/app/dialog/dialog.component.html -->
+<div *ngIf="isOpen" class="modal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ title }}</h5>
+        <button type="button" class="btn-close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
     </div>
-    <div class="dialog-body">
-      <ng-content></ng-content>
-    </div>
-    <!-- <div class="dialog-footer">
-      <button (click)="close()">Close</button>
-    </div> -->
   </div>
 </div>
+
 

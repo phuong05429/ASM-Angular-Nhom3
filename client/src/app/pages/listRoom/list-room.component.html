@@ -1,4 +1,5 @@
-<div class="container-lg mt-4 bg-light p-4 rounded">
+
+<div class="container mt-4 bg-white p-4 rounded">
   <div class="row mb-2">
     <div class="col-12">
       <div class="d-flex justify-content-between align-items-center">
@@ -17,7 +18,7 @@
   <div class="row">
     <!-- Loop through rooms -->
     <div class="col-12 mb-2" *ngFor="let room of roomsByFloor">
-      <strong class="text-primary">Lầu {{ room.floor }}</strong>
+      <strong>Lầu {{ room.floor }}</strong>
       <div class="row">
         <div class="col-2 mb-2" *ngFor="let roomItem of room.rooms">
           <div class="room p-3 border rounded" (click)="editRoom(roomItem)" [ngClass]="{
@@ -59,6 +60,7 @@
     <div class="mb-3">
       <label for="price" class="form-label">Giá phòng 1 giờ</label>
       <input type="number" class="form-control" id="price" placeholder="Nhập giá" formControlName="price" disabled="" />
+      
     </div>
 
     <div class="mb-3">

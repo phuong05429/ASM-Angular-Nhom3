@@ -26,5 +26,11 @@ export const API_ENDPOINT: IAPIEndpoint = {
     add:API_BASE_URL + '/check-in',
     edit:API_BASE_URL + '/check-in',
     delete:API_BASE_URL + '/check-in',
+  },
+  food: {
+    base: API_BASE_URL + '/food',
+    add: API_BASE_URL + '/food',
+    edit: API_BASE_URL + '/food',
+    delete: API_BASE_URL + '/food',
   }
 };

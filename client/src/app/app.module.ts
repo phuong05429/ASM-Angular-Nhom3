@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NbSidebarModule,
   NbMenuModule,
@@ -13,12 +14,9 @@ import {
 import {HttpClientModule} from "@angular/common/http";
 import {CoreModule} from "./@core/core.module";
 import {ThemeModule} from "./@theme/theme.module";
-
-
-import { UserComponent } from './pages/user/user.component';
 import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './pages/menu/menu.component';
 import { OutfitComponent } from './pages/outfit/outfit.component';
+
 
 
 @NgModule({
@@ -26,18 +24,17 @@ import { OutfitComponent } from './pages/outfit/outfit.component';
     AppComponent,
 
 
-
-  
-    UserComponent,
     HomeComponent,
-    MenuComponent,
     OutfitComponent,
+
 
    
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule, 
+    ReactiveFormsModule, 
     HttpClientModule,
     AppRoutingModule,
     NbSidebarModule.forRoot(),
@@ -51,6 +48,8 @@ import { OutfitComponent } from './pages/outfit/outfit.component';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

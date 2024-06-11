@@ -11,10 +11,9 @@ import {ListRoomComponent} from "./listRoom/list-room.component";
 import {HotelsComponent} from "./hotels/hotels.component";
 import {ChartComponent} from "./chart/chart.component";
 
-import { UserComponent } from './user/user.component';
-import { MenuComponent } from './menu/menu.component';
 import { OutfitComponent } from './outfit/outfit.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FoodComponent } from './food/food.component';
 
 
 const routes: Routes = [{
@@ -50,18 +49,15 @@ const routes: Routes = [{
       path: 'chart',
       component: ChartComponent,
       data: {breadcrumb: 'Biểu đồ lượt khách'},
+    }, 
+    {
+      path: 'food',
+      component: FoodComponent,
+      data: {breadcrumb: 'food'},
     },
    
-    {
-      path: 'user',
-      component: UserComponent,
-      data: {breadcrumb: 'user'},
-    },
-    {
-      path: 'menu',
-      component: MenuComponent,
-      data: {breadcrumb: 'menu'},
-    },
+   
+    
     {
       path: 'outfit',
       component: OutfitComponent,

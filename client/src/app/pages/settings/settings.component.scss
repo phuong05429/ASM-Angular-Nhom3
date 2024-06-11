@@ -17,17 +17,3 @@
     }
   }
 }
-.room {
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.room:hover {
-  transform: scale(1.05);
-}
-
-.delete-icon {
-  position: absolute;
-  top: 5px;
-  right: 10
-}

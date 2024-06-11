@@ -6,7 +6,8 @@ const settingRoutes = require('./routes/settingRoutes');
 const roomRoutes = require('./routes/roomRoutes');
 const checkInRoutes = require('./routes/checkInRoutes');
 const foodRoutes = require('./routes/foodRoutes');
-const cors = require('cors');
+
+
 const { sequelize } = require('./models');
 const cors = require('cors');
 const app = express();
