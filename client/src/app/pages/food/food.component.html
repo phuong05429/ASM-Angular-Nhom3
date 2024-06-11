@@ -21,10 +21,10 @@
         <img class="img-hotel" [src]="food.image" alt="{{ food.name }}" style="width: 100%;height: 200px ;" />
       </div>
       <p>{{ food.name }}</p>
-      <button type="button" class="btn btn-danger" style="margin-right: 12px" (click)="deleteHotel(food.id)">
+      <button type="button" class="btn btn-danger" style="margin-right: 12px" (click)="deleteFood(food.id)">
         Xóa
       </button>
-      <button type="button" class="btn btn-warning" (click)="editHotel(food)">
+      <button type="button" class="btn btn-warning" (click)="editFood(food)">
         Sửa
       </button>
     </div>
