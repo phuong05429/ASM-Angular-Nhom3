@@ -1,0 +1,25 @@
+/* src/app/pages/food/food.component.css */
+.food-list {
+    margin: 20px;
+  }
+  
+  .food-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .food-list th, .food-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .food-list th {
+    background-color: #435d7d;
+    text-align: left;
+  }
+  
+  .food-list img {
+    max-width: 50px;
+    height: auto;
+  }
+  

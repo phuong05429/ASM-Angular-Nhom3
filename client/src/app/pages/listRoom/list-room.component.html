@@ -1,0 +1,107 @@
+
+<div class="container mt-4 bg-white p-4 rounded">
+  <div class="row mb-2">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-success" (click)="loadRooms('available')">Trống</button>
+          <button type="button" class="btn btn-danger" (click)="loadRooms('occupied')">Đang ở</button>
+          <button type="button" class="btn btn-secondary" (click)="loadRooms()">Tất cả</button>
+        </div>
+        <button type="button" class="btn btn-light" (click)="openDialog()">
+          Thêm mới phòng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Loop through rooms -->
+    <div class="col-12 mb-2" *ngFor="let room of roomsByFloor">
+      <strong>Lầu {{ room.floor }}</strong>
+      <div class="row">
+        <div class="col-2 mb-2" *ngFor="let roomItem of room.rooms">
+          <div class="room p-3 border rounded" (click)="editRoom(roomItem)" [ngClass]="{
+              'bg-success text-white': roomItem.status === 'available',
+              'bg-danger text-white': roomItem.status === 'occupied',
+              'bg-secondary text-white': roomItem.status === 'cleaning'
+            }">
+            <div class="room-status">{{ roomItem.name }}</div>
+            <div>{{ roomItem.roomName }}</div>
+            <span class="delete-icon text-danger" (click)="deleteRoom(roomItem)">&times;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-dialog [isOpen]="isDialogOpen" title="Thêm phòng" (closeModal)="closeDialog()">
+  <form [formGroup]="formData" (ngSubmit)="addRoom()">
+    <div class="mb-3">
+      <label for="hotelName" class="form-label">Tên phòng</label>
+      <input type="text" class="form-control" id="hotelName" placeholder="Nhập phòng" formControlName="name" />
+      <div class="text-danger" *ngIf="formData.get('name')!.invalid && formData.get('name')!.touched">
+        <ng-container *ngIf="formData.get('name')!.errors?.required">
+          Tên bắt buộc nhập!
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="roomType" class="form-label">Loại phòng</label>
+      <select id="roomType" class="form-select" formControlName="roomType" (change)="updatePrice()">
+        <option *ngFor="let room of roomTypes" [value]="room.value">
+          {{ room.type }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá phòng 1 giờ</label>
+      <input type="number" class="form-control" id="price" placeholder="Nhập giá" formControlName="price" disabled="" />
+      
+    </div>
+
+    <div class="mb-3">
+      <label for="overnight" class="form-label">Giá phòng qua đêm</label>
+      <input type="number" class="form-control" id="overnight" placeholder="Nhập giá" formControlName="overnight"
+        disabled="" />
+    </div>
+    <div class="mb-3">
+      <label for="floor" class="form-label">Tầng</label>
+      <select id="floor" class="form-select" formControlName="floor">
+        <option *ngFor="let floor of floors" [value]="floor">
+          {{ floor }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô Tả</label>
+      <textarea class="form-control" id="description" rows="3" placeholder="Nhập mô tả"
+        formControlName="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Lưu</button>
+  </form>
+</app-dialog>
+
+<div class="dialog-backdrop" *ngIf="isOpenDelete">
+  <div class="dialog">
+    <div class="dialog-header">
+      <h5 class="modal-title">Confirm Delete</h5>
+    </div>
+    <div class="modal-body">
+      Bạn có muốn xóa phòng {{ selectedRoom?.name }}?
+    </div>
+    <div class="modal-footer">
+      <button type="button" style="margin: 0 10px" class="btn btn-secondary" (click)="closeDialogDelete()"
+        data-bs-dismiss="modal">
+        Hủy
+      </button>
+      <button type="button" class="btn btn-danger" (click)="deleteHotel()">
+        Xóa
+      </button>
+    </div>
+  </div>
+</div>
