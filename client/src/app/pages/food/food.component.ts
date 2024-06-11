@@ -32,9 +32,10 @@ export class FoodComponent implements OnInit {
   loadFoods(): void {
     this.foodService.getFoods().subscribe({
       next: (res) => {
-        const { data, status } = res;
-        if (status === 'success') {
-          this.foods = data.foods;
+        // const { data, status } = res;
+        
+        if (res) {
+          this.foods = res
         }
       },
       error: (err) => {
