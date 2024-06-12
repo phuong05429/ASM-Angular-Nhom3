@@ -5,7 +5,7 @@
 }
 .room{
   overflow: hidden;
-  height: 200px;
+  height: 100px;
 }
 .col-2{
   p{
@@ -59,4 +59,16 @@
   justify-content: flex-end;
 }
 
+.card {
+  height: 100%;
+}
 
+.card-img-top {
+  object-fit: cover;
+  height: 300px;
+}
+.btn-custom {
+  margin: 1px;
+  align-items: center;
+  width: 200px; 
+}

@@ -15,21 +15,27 @@
   </div>
 
   <div class="row">
-    <div *ngFor="let hotel of hotels" class="col-2" style="width: 25%; margin-top: 12px">
-      <div class="room red">
-        <img class="img-hotel" [src]="hotel.image" alt="{{ hotel.name }}" />
+    <div *ngFor="let hotel of hotels" class="col-md-4">
+      <div class="card">
+        <img class="card-img-top room" [src]="hotel.image" alt="{{ hotel.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ hotel.name }}</h5>
+          <p class="card-text">Gia trung binh: {{ hotel.price }}</p>
+          <p class="card-text">Ghi chu: {{ hotel.description }}</p>
+          <button type="button" class="btn btn-danger btn-custom mr-2" (click)="deleteHotel(hotel.id)">
+            Xóa
+          </button>
+          <button type="button" class="btn btn-warning btn-custom" (click)="editHotel(hotel)">
+            Sửa
+          </button>
+        </div>
       </div>
-      <p>{{ hotel.name }}</p>
-      <button type="button" class="btn btn-danger" style="margin-right: 12px" (click)="deleteHotel(hotel.id)">
-        Xóa
-      </button>
-      <button type="button" class="btn btn-warning" (click)="editHotel(hotel)">
-        Sửa
-      </button>
     </div>
   </div>
-
 </div>
+
+
+
 <app-dialog [isOpen]="isDialogOpen" title="Thêm Khách Sạn" (closeModal)="closeDialog()">
   <form [formGroup]="formData" (ngSubmit)="addHotel()">
     <div class="mb-3">
