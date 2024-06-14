@@ -1,5 +1,6 @@
 const CheckIn = require('../models/checkInModel');
 const Room = require('./roomController');
+const { Op } = require('sequelize');
 
 // Phương thức để tạo mới một check-in
 exports.createCheckIn = async (req, res) => {
@@ -74,6 +75,45 @@ exports.deleteCheckIn = async (req, res) => {
     await checkIn.destroy();
 
     res.status(204).end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+exports.updateCheckOutDate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { checkOutDate } = req.body;
+
+    const checkIn = await CheckIn.findByPk(id);
+    if (!checkIn) {
+      return res.status(404).json({ message: 'Check-in not found' });
+    }
+
+    checkIn.checkOutDate = checkOutDate;
+    await checkIn.save();
+
+    await Room.updateRoomStatus(checkIn.room, "available");
+
+    res.status(200).json(checkIn);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+// Phương thức để lấy tất cả các phòng đã trả
+exports.getCheckedOutRooms = async (req, res) => {
+  try {
+    const checkedOutRooms = await CheckIn.findAll({
+      where: {
+        checkOutDate: {
+          [Op.not]: null
+        }
+      }
+    });
+    res.status(200).json(checkedOutRooms);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
