@@ -11,6 +11,7 @@ import {ListRoomComponent} from "./listRoom/list-room.component";
 import {HotelsComponent} from "./hotels/hotels.component";
 import {ChartComponent} from "./chart/chart.component";
 
+
 import { OutfitComponent } from './outfit/outfit.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FoodComponent } from './food/food.component';

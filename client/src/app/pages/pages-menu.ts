@@ -60,8 +60,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }
     ],
   },
-  
- 
+
   {
     title: 'Thống kê',
     icon: 'pie-chart-outline', // Icon của mục menu
@@ -71,7 +70,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'list-outline', // Icon của mục con
         link: '/pages/bill-list', // Đường dẫn của mục con
       },
-      
+
       {
         title: 'Biểu đồ', // Tiêu đề mục con
         icon: 'file-text-outline', // Icon của mục con

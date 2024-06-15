@@ -2,11 +2,48 @@
   position: relative;
   height: 40vh;
   width: 80vw;
+  max-width: 1200px; /* Ensures the chart does not get too wide on large screens */
   margin: auto;
+  background-color: #ffffff; /* White background for a clean look */
+  border-radius: 10px; /* Rounded corners for a modern appearance */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Padding inside the container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
+
+.chart-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
 .table-responsive {
   margin-top: 20px;
+  background-color: #ffffff; /* White background for the table */
+  border-radius: 10px; /* Rounded corners for the table */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 10px; /* Padding inside the table container */
 }
-#checkinChart{
-  height: 100%;
+
+#checkinChart {
+  height: 100%; /* Ensures the chart uses the full height of the container */
+  width: 100%; /* Ensures the chart uses the full width of the container */
 }
+
+body {
+  font-family: 'Arial', sans-serif; /* Modern and clean font */
+  background-color: #f4f4f4; /* Light grey background for the entire page */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif; /* Different font for headings for better distinction */
+}
+
+.container {
+  padding: 20px;
+}
+

@@ -14,6 +14,7 @@ import {
 import {HttpClientModule} from "@angular/common/http";
 import {CoreModule} from "./@core/core.module";
 import {ThemeModule} from "./@theme/theme.module";
+
 import { HomeComponent } from './home/home.component';
 import { OutfitComponent } from './pages/outfit/outfit.component';
 
@@ -22,6 +23,7 @@ import { OutfitComponent } from './pages/outfit/outfit.component';
 @NgModule({
   declarations: [
     AppComponent,
+
 
 
     HomeComponent,
