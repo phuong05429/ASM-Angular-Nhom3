@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 
-import { API_ENDPOINT } from 'app/@core/config/api-endpoint.config';
+import { API_BASE_URL, API_ENDPOINT } from 'app/@core/config/api-endpoint.config';
 import { ApiService } from '../common';
 import { CheckIntModel } from 'app/@core/model/checkin.model';
 
@@ -50,11 +50,24 @@ export class CheckInService extends ApiService {
       })
     );
   }
-  getCheckedOutRooms(): Observable<any[]> {
-    return this.get<any[]>(`${API_ENDPOINT.checkin.checkout}`);
+  apiUrl = API_ENDPOINT.checkin.checkout
+  getCheckedOutRooms(page: number, limit: number): Observable<any> {
+    let params = new HttpParams().set('page', page.toString()).set('limit', limit.toString());
+    return this.get<any>(`${API_ENDPOINT.checkin.checkout}?${params}`);
   }
 
   updateCheckOutDate(id: number, checkOutDate: Date): Observable<any> {
     return this.put<any>(`${API_ENDPOINT.checkin.base}/${id}/checkout`, { checkOutDate });
+  }
+
+  getStatistics(): Observable<any[]> {
+    return this.get<any[]>(`${API_BASE_URL}/stats`);
+  }
+  getStatisticsByRoomType(): Observable<any[]> {
+    return this.get<any[]>(`${API_BASE_URL}/stats/roomType`);
+  }
+
+  getStatisticsByRentalType(): Observable<any[]> {
+    return this.get<any[]>(`${API_BASE_URL}/stats/rentalType`);
   }
 }

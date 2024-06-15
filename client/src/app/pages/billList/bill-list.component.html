@@ -1,42 +1,43 @@
-
 <div class="container mt-3">
   <h1>Danh sách hóa đơn</h1>
 
 
 
 
-<div class="container mt-4 bg-white p-4">
+  <div class="container mt-4 bg-white p-4">
 
-  <h2 class="mb-4">Danh sách hóa đơn khách sạn</h2>
+    <h2 class="mb-4">Danh sách hóa đơn khách sạn</h2>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Số phòng</th>
-        <th>Loại phòng</th>
-        <th>Loại thuê</th>
-        <th>Giờ vào</th>
-        <th>Giờ trả</th>
-        <td>Số giờ (đêm)</td>
-        <th>Số tiền</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let room of checkedOutRooms">
-        <td>{{ room.roomName }}</td>
-        <td>{{ room.roomType }}</td>
-        <td>{{ room.times == "hour" ? "Theo giờ" : "Thuê đêm" }}</td>
-        <td>{{ room.checkInDate }}</td>
-        <td>{{ room.checkOutDate }}</td>
-        <td>{{ room.diffHrs }}</td>
-        <td>
-          {{
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Số phòng</th>
+          <th>Loại phòng</th>
+          <th>Loại thuê</th>
+          <th>Giờ vào</th>
+          <th>Giờ trả</th>
+          <td>Số giờ (đêm)</td>
+          <th>Số tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of checkedOutRooms">
+          <td>{{ room.roomName }}</td>
+          <td>{{ room.roomType }}</td>
+          <td>{{ room.times == "hour" ? "Theo giờ" : "Thuê đêm" }}</td>
+          <td>{{ room.checkInDate }}</td>
+          <td>{{ room.checkOutDate }}</td>
+          <td>{{ room.diffHrs }}</td>
+          <td>
+            {{
             room.total.toLocaleString("vi-VN", {
-              style: "currency",
-              currency: "VND"
+            style: "currency",
+            currency: "VND"
             })
-          }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ngx-paginator [apiUrl]="apiUrl" [current_page]="currentPage" [last_page]="lastPage" (currentPageFn)="getPage($event)">
+    </ngx-paginator>
