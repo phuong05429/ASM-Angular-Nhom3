@@ -46,6 +46,10 @@ const CheckIn = sequelize.define('CheckIn', {
   checkInDate: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW
+  },
+  checkOutDate: {  // Thêm trường checkOutDate
+    type: DataTypes.DATE,
+    allowNull: true
   }
 }, {
   tableName: 'checkins'

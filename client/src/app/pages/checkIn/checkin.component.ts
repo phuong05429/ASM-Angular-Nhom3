@@ -170,7 +170,7 @@ export class CheckinComponent implements OnInit {
         if (status == 'success') {
           console.log(data.checkIns);
           
-          this.checkinList = data.checkIns.map((checkin:any)=>({...checkin,checkInDate:DateUtil.convertFullTime(checkin.checkInDate)}))
+          this.checkinList = data.checkIns.filter(c=>c.checkOutDate == null).map((checkin:any)=>({...checkin,checkInDate:DateUtil.convertFullTime(checkin.checkInDate)}))
         }
       },
       error: (err) => {

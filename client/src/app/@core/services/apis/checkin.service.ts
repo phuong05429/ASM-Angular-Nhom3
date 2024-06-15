@@ -16,10 +16,10 @@ export class CheckInService extends ApiService {
 
   getCheckIn(): Observable<any> {
     let url = API_ENDPOINT.checkin.base;
-    
+
     return this.get(url);
   }
- 
+
 
   addCheckIn(checkIn: CheckIntModel): Observable<any> {
     return this.post<any>(API_ENDPOINT.checkin.add, checkIn).pipe(
@@ -49,5 +49,12 @@ export class CheckInService extends ApiService {
         throw error;
       })
     );
+  }
+  getCheckedOutRooms(): Observable<any[]> {
+    return this.get<any[]>(`${API_ENDPOINT.checkin.checkout}`);
+  }
+
+  updateCheckOutDate(id: number, checkOutDate: Date): Observable<any> {
+    return this.put<any>(`${API_ENDPOINT.checkin.base}/${id}/checkout`, { checkOutDate });
   }
 }

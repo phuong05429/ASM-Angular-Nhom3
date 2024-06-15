@@ -57,15 +57,17 @@ export class CheckoutComponent implements OnInit {
     this.isOpen = false;
   }
   handleConfirm() {
-    this.checkinService.deleteCheckIn(this.showData.id).subscribe({
-      next: () => {
-        this.isOpen = false;
-        this.router.navigate(['/pages/check-in']);
-        sessionStorage.removeItem('customer');
-      },
-      error: (err) => {
-        alert("Có lỗi xảy ra")
-      },
-    });
+    this.checkinService
+      .updateCheckOutDate(this.showData.id, new Date())
+      .subscribe({
+        next: () => {
+          this.isOpen = false;
+          this.router.navigate(['/pages/check-in']);
+          sessionStorage.removeItem('customer');
+        },
+        error: (err) => {
+          alert('Có lỗi xảy ra');
+        },
+      });
   }
 }

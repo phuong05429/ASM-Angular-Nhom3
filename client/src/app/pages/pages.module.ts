@@ -16,6 +16,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FoodComponent } from './food/food.component';
+import { BillListComponent } from './billList/bill-list.component';
 
 @NgModule({
   imports: [
@@ -27,9 +28,16 @@ import { FoodComponent } from './food/food.component';
     NbMenuModule,
     PaginatorModule,
     FormsModule,
-    ReactiveFormsModule,NbCardModule
+    ReactiveFormsModule, NbCardModule
   ],
-  declarations: [PagesComponent, HotelsComponent, DialogComponent, ListRoomComponent, SettingsComponent, CheckinComponent,CheckoutComponent, FoodComponent],
+  declarations: [PagesComponent, HotelsComponent,
+    DialogComponent,
+    ListRoomComponent,
+    SettingsComponent,
+    CheckinComponent,
+    CheckoutComponent,
+    FoodComponent,
+    BillListComponent],
   providers: [],
 })
 export class PagesModule { }
