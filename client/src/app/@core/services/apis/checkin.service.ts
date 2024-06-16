@@ -58,3 +58,5 @@ export class CheckInService extends ApiService {
     return this.put<any>(`${API_ENDPOINT.checkin.base}/${id}/checkout`, { checkOutDate });
   }
 }
+
+

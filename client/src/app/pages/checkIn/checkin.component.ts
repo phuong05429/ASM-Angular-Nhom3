@@ -86,7 +86,6 @@ export class CheckinComponent implements OnInit {
     const selectedType = this.formData.get('times')?.value;
     console.log(selectedType);
     console.log(this.selectedTypeRoom);
-    
     if(this.selectedTypeRoom && selectedType == "hour"){
       this.formData.get('price')?.setValue(this.selectedTypeRoom.price);
     }
@@ -169,7 +168,6 @@ export class CheckinComponent implements OnInit {
         const { data, status } = res;
         if (status == 'success') {
           console.log(data.checkIns);
-          
           this.checkinList = data.checkIns.filter(c=>c.checkOutDate == null).map((checkin:any)=>({...checkin,checkInDate:DateUtil.convertFullTime(checkin.checkInDate)}))
         }
       },
@@ -194,3 +192,6 @@ export class CheckinComponent implements OnInit {
     this.formData.reset();
   }
 }
+
+
+
