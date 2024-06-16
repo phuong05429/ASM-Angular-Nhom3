@@ -1,6 +1,6 @@
 const CheckIn = require('../models/checkInModel');
 const Room = require('./roomController');
-const { Op } = require('sequelize');
+const { Op,fn, col } = require('sequelize');
 
 // Phương thức để tạo mới một check-in
 exports.createCheckIn = async (req, res) => {
@@ -106,14 +106,72 @@ exports.updateCheckOutDate = async (req, res) => {
 // Phương thức để lấy tất cả các phòng đã trả
 exports.getCheckedOutRooms = async (req, res) => {
   try {
-    const checkedOutRooms = await CheckIn.findAll({
+    const page = parseInt(req.query.page, 10) || 1;  // Lấy trang hiện tại, mặc định là trang 1
+    const limit = parseInt(req.query.limit, 10) || 10;  // Lấy số bản ghi mỗi trang, mặc định là 10
+    const offset = (page - 1) * limit;  // Tính toán offset
+
+    const { count, rows: checkedOutRooms } = await CheckIn.findAndCountAll({
       where: {
         checkOutDate: {
-          [Op.not]: null
+          [Op.ne]: null
         }
-      }
+      },
+      limit,
+      offset
     });
-    res.status(200).json(checkedOutRooms);
+
+    res.status(200).json({
+      totalItems: count,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+      data: checkedOutRooms
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+// Biểu đồ loại phòng
+exports.getStatisticsByRoomType = async (req, res) => {
+  try {
+    const roomTypeStats = await CheckIn.findAll({
+      attributes: [
+        'roomType',
+        [fn('COUNT', col('id')), 'totalRooms'],
+      ],
+      where: {
+        checkOutDate: {
+          [Op.ne]: null
+        }
+      },
+      group: ['roomType']
+    });
+
+    res.status(200).json(roomTypeStats);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+// Biểu đồ thuê theo giờ theo đêm
+exports.getStatisticsByRentalType = async (req, res) => {
+  try {
+    const rentalTypeStats = await CheckIn.findAll({
+      attributes: [
+        'times',
+        [fn('COUNT', col('id')), 'totalRooms'],
+      ],
+      where: {
+        checkOutDate: {
+          [Op.ne]: null
+        }
+      },
+      group: ['times']
+    });
+
+    res.status(200).json(rentalTypeStats);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });

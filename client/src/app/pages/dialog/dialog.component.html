@@ -1,10 +1,10 @@
 <!-- src/app/dialog/dialog.component.html -->
-<div *ngIf="isOpen" class="modal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);">
+<div *ngIf="isOpen" class="modal" tabindex="-1" style="display: flex; background: rgba(0,0,0,0.5); align-items: center;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">{{ title }}</h5>
-        <button type="button" class="btn-close" (click)="close()"></button>
+        <button type="button" class="btn-close" (click)="close()">&times;</button>
       </div>
       <div class="modal-body">
         <ng-content></ng-content>

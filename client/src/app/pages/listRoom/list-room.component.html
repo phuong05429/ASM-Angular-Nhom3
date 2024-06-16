@@ -28,7 +28,7 @@
             }">
             <div class="room-status">{{ roomItem.name }}</div>
             <div>{{ roomItem.roomName }}</div>
-            <span class="delete-icon text-danger" (click)="deleteRoom(roomItem)">&times;</span>
+            <span class="delete-icon " (click)="deleteRoom(roomItem)">&times;</span>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
       <h5 class="modal-title">Confirm Delete</h5>
     </div>
     <div class="modal-body">
-      Bạn có muốn xóa phòng {{ selectedRoom?.name }}?
+      Bạn có muốn xóa phòng <strong>{{ selectedRoom?.name }}</strong>?
     </div>
     <div class="modal-footer">
       <button type="button" style="margin: 0 10px" class="btn btn-secondary" (click)="closeDialogDelete()"

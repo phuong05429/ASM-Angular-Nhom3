@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { NbCardModule, NbMenuModule } from "@nebular/theme";
 import { ThemeModule } from '../@theme/theme.module';
 
@@ -17,6 +17,7 @@ import { PagesComponent } from './pages.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FoodComponent } from './food/food.component';
 import { BillListComponent } from './billList/bill-list.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   imports: [
@@ -24,12 +25,12 @@ import { BillListComponent } from './billList/bill-list.component';
     ThemeModule,
     DashboardModule,
     BillListModule,
-    ChartModule,
     NbMenuModule,
     PaginatorModule,
     FormsModule,
     ReactiveFormsModule, NbCardModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [PagesComponent, HotelsComponent,
     DialogComponent,
     ListRoomComponent,
@@ -37,7 +38,9 @@ import { BillListComponent } from './billList/bill-list.component';
     CheckinComponent,
     CheckoutComponent,
     FoodComponent,
-    BillListComponent],
+    BillListComponent,
+    ChartComponent,
+  ],
   providers: [],
 })
 export class PagesModule { }

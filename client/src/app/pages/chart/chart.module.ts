@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   declarations: [
-    ChartComponent
   ],
 })
 export class ChartModule { }
