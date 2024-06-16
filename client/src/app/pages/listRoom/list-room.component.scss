@@ -14,7 +14,7 @@
     font-size: 20px;
     cursor: pointer;
     display: none;
-    color: red;
+    color:#fff;
   }
   
   &:hover .delete-icon {
@@ -101,4 +101,14 @@
 
 .btn-close:hover {
   color: #dc3545;
+}
+
+.modal-body{
+  text-align: center;
+  margin: 20px 0;
+  font-size: 16px;
+}
+.modal-footer{
+  justify-content: center;
+  margin:10px
 }

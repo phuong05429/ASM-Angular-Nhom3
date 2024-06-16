@@ -23,6 +23,10 @@
   overflow:auto
 }
 
+.modal-dialog{
+  min-width: 400px;
+}
+
 .dialog-header {
   padding: 16px;
   border-bottom: 1px solid #eaeaea;

@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DialogComponent implements OnInit {
   @Input() isOpen = false;
+  @Input() title = '';
   @Output() closeModal : EventEmitter<any> = new EventEmitter()
   constructor() {}
 

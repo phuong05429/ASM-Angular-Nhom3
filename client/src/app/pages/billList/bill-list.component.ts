@@ -43,8 +43,8 @@ export class BillListComponent implements OnInit {
             diffHrs:
               room.times == 'hour'
                 ? Math.ceil(
-                  (new Date(room.checkOutDate).getTime() -
-                    new Date(room.checkInDate).getTime()) /
+                  (new Date(room.checkOutDate).getTime() -  
+                    new Date(room.checkInDate).getTime()) /  
                   (1000 * 60 * 60)
                 )
                 : 1,
